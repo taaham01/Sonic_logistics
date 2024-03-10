@@ -1,9 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Sonic_logistics.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Add services to the container.
+builder.Services.AddDbContext<soniclogisticsDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Soniclogistics")));
+
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -23,5 +32,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+   
 app.Run();
