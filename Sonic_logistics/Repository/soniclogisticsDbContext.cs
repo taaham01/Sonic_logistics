@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Sonic_logistics.Repository.Models;
+using Sonic_logistics.Models;
 
 namespace Sonic_logistics.Repository;
 
@@ -55,4 +56,10 @@ public partial class soniclogisticsDbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+public DbSet<Sonic_logistics.Models.Grn> Grn { get; set; } = default!;
+
+public DbSet<Sonic_logistics.Models.Invoice> Invoice { get; set; } = default!;
+
+public DbSet<Sonic_logistics.Models.SalesQuote> SalesQuote { get; set; } = default!;
 }
